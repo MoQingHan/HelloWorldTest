@@ -10,4 +10,11 @@ dao层接口写实例 sql语句的 id对应接口内方法的方法名 传参入
  		select count(*) from jntsbt_zsxx where zsbh=#{name} 
  	</select>
  	
+ 	<select id="getAllZsbhs" resultType="TestPojo" parameterType="TestPojo">
+ 		select zsbh from jntsbt_zsxx where 1=1
+ 		 <if test="zsbh != null"> 
+ 			zsbh=#{name} 
+ 		 </if>
+ 	</select>
+ 	
 </mapper>
