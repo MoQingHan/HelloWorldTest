@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sx.test.dao.IDao;
+import com.sx.test.pojo.Test;
 import com.sx.test.service.TestService;
 
 @Service(value = "testService")
@@ -27,9 +28,8 @@ public class TestServiceImpl implements TestService{
 
 
 	@Override
-	public List<String> getALlData() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Test> getALlData() {
+		return iDao.getAllZsbhs(null);
 	}
 
 

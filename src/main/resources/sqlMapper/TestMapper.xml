@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+namespace 唯一限定名，与dao层interface路径对应，mybatis可以自动检测并生成代理类无需为
+dao层接口写实例 sql语句的 id对应接口内方法的方法名 传参入参也对应java的传参入参	
+-->
 <mapper namespace="com.sx.test.dao.IDao" >
+	<!--#{}形式的参数与 占位符?类型，可以防止sql注入 而 ${}形式的参数，是直接拼接字符串。  -->
  	<select id="count" resultType="String" parameterType="String">
- 		select count(*) from jntsbt_zsxx where zsbh=#{name}
+ 		select count(*) from jntsbt_zsxx where zsbh=#{name} 
  	</select>
+ 	
+ 	<select id="getAllZsbhs" resultType="TestPojo" parameterType="TestPojo">
+ 		select zsbh from jntsbt_zsxx where 1=1
+ 		 <if test="zsbh != null"> 
+ 			zsbh=#{name} 
+ 		 </if>
+ 	</select>
+ 	
 </mapper>
