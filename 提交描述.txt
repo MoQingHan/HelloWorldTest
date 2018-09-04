@@ -1,0 +1,60 @@
+5.1提交描述详解
+
+<type>(<scope>) : <subject>
+<空行>
+<body>
+<空行>
+<footer>
+
+5.1.1 Header
+
+5.1.1.1
+type:type的值可以有很多，下面有几个我们常用到的:
+
+feat:新功能
+fix:修复bug
+doc:仅仅修改了文档，比如README等等
+style:仅仅修改了空格、格式缩进、不改变代码逻辑
+refactor:代码重构，没有加新功能或者修复bug
+perf:性能优化，比如提升性能、体验
+test:测试用例，包括单元测试、集成测试等
+build :改变了build工具 如 grunt换成了 npm
+chore: 改变构建流程、或者增加依赖库、工具等
+revert: 撤销上一次的 commit
+5.1.1.2 scope :用来说明此次修改的影响范围
+
+all ：表示影响面大 ，如修改了网络框架 会对真个程序产生影响
+location： 表示影响小，某个小小的功能
+module：表示会影响某个模块 如登录模块、首页模块 、用户管理模块等等
+5.1.1.3 subject: 用来简要描述本次改动，概述就好了
+
+5.1.2 Body
+Body 部分是对本次 commit 的详细描述，可以分成多行。
+
+5.1.3 Footer
+
+Footer 部分只用于两种情况。 5.1.3.1 不兼容变动 如果当前代码与上一个版本不兼容，则 Footer 部分以BREAKING CHANGE开头，后面是对变动的描述、以及变动理由和迁移方法。 例如：
+
+BREAKING CHANGE: isolate scope bindings definition has changed.
+
+    To migrate the code follow the example below:
+
+    Before:
+
+    scope: {
+      myAttr: 'attribute',
+    }
+
+    After:
+
+    scope: {
+      myAttr: '@',
+    }
+
+    The removed `inject` wasn't generaly useful for directives so there should be no code using it.
+5.1.3.2 关闭 Issue 如果当前 commit 针对某个issue，那么可以在 Footer 部分关闭这个 issue 。
+
+Closes #234
+也可以一次关闭多个 issue 。
+
+Closes #123, #245, #992
